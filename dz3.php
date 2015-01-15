@@ -3,7 +3,9 @@ header('Content-type: text/html; charset=utf-8');
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 ini_set('display_errors','1');
 date_default_timezone_set('Europe/Moscow');
-echo 'Мой часовой пояс : ' .date('l d.m.Y H:i:s');
+echo 'Мой часовой пояс : ' .date('l d.m.Y H:i:s')."<br>";
+
+
 
 //Создайте массив $date с пятью элементами
 //C помощью генератора случайных чисел забейте массив $date юниксовыми метками
@@ -13,7 +15,9 @@ $date = array(rand(time(),1),
               rand(time(),1),
               rand(time(),1));
 
-var_dump($date);
+
+
+
 //Сделайте вывод сообщения на экран о том, какой день в сгенерированном 
 //массиве получился наименьшим, а какой месяц наибольшим
 
@@ -44,9 +48,9 @@ date('m', $date[4])
 );
 echo '</br>';
 //Отсортируйте массив по возрастанию дат
-echo 'Сортировка массива от меньшего к большему';
+
 sort($date);
-var_dump($date);
+
 //С помощью функция для работы с массивами извлеките 
 //последний элемент массива в новую переменную $selected
 $selected = array_pop($date);
@@ -55,8 +59,19 @@ $selected = array_pop($date);
 echo 'Вывод $selected в формате: ' .date('d.m.Y G:i:s',$selected)."</br>";
 
 date_default_timezone_set('America/New_York');
-echo 'Время в Нью-Йорке : ' .date('l d.m.Y H:i:s');
+echo 'Время в Нью-Йорке : ' .date('l d.m.Y H:i:s')."<br>";
 
 
+//Дополнительное задание, вывод минимального дня в неделе 
+echo "<br>".'Вывод минимального дня в неделе: ';
+echo "<br>";
+array_map('print_date',$date);  /*Ещё раз вызываю фунцию, чтобы показать 
+                                массив после проделанных выше изменений */
+
+echo "Минимальный день это: ".min(date('N l', $date[0]),
+date('N l', $date[1]),
+date('N l', $date[2]),
+date('N l', $date[3])
+);
 
 ?>
