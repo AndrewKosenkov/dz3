@@ -62,16 +62,21 @@ date_default_timezone_set('America/New_York');
 echo 'Время в Нью-Йорке : ' .date('l d.m.Y H:i:s')."<br>";
 
 
+array_push($date, rand(time(),1)); //снова добавляем элемент в массив
+print_r($date);
+
+
 //Дополнительное задание, вывод минимального дня в неделе 
 echo "<br>".'Вывод минимального дня в неделе: ';
 echo "<br>";
 array_map('print_date',$date);  /*Ещё раз вызываю фунцию, чтобы показать 
                                 массив после проделанных выше изменений */
 
-echo "Минимальный день это: ".min(date('N l', $date[0]),
+$min_date = min(date('N l', $date[0]),
 date('N l', $date[1]),
 date('N l', $date[2]),
-date('N l', $date[3])
+date('N l', $date[3]),
+date('N l', $date[4])
 );
-
+echo 'Минимальный день в неделе: '.substr($min_date,1);//вырезаю число
 ?>
